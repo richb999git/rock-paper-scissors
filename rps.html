@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+
+<script>
+    
+    // recursion examples
+    /* function pow(x, n) {
+        if (n == 1) {
+            return x;
+        } else {
+        return x * pow(x, n - 1);
+        }
+    }
+    alert( pow(2, 4) ); // 16
+    
+    function pow(x, n) {
+        return (n == 1) ? x : (x * pow(x, n - 1));
+    }
+    alert( pow(2, 4) ); // 16*/
+    
+    function game() {
+        playerScore = 0;
+        computerScore = 0;
+        for (var i = 0; i < 5; i++) {
+            const playerSelection = prompt('Rock, Paper, Scissors? Choose!').toLowerCase();
+            if (playerSelection != "rock" && playerSelection !="paper" && playerSelection !="scissors") {
+                console.log("please enter a valid option");
+                i--;
+            } else {
+                const computerSelection = computerPlay();
+                console.log(computerSelection, playerSelection);
+                var result = playRound(playerSelection, computerSelection);
+                if (result == "Computer wins!") {
+                    computerScore++;
+                }
+                if (result == "Player wins!") {
+                    playerScore++;
+                }
+                console.log(result); 
+            }
+        }
+        console.log("Final score: Player: " + playerScore + " Computer: " + computerScore)
+        
+        if (playerScore > computerScore) {
+            console.log("Player wins!");
+        } else if (computerScore > playerScore) {
+            console.log("Computer wins!");
+        } else {
+            console.log("DRAW!");
+        }
+    }
+    
+    function computerPlay() {
+        var choices = ['rock', 'paper', 'scissors'];
+        return choices[Math.floor(Math.random()*3)];
+    }
+    
+    function playRound(playerSelection, computerSelection) {
+
+        if (computerSelection == playerSelection) { return "Draw!"};
+        
+        if (computerSelection == "paper" && playerSelection == "rock") {return "Computer wins!";}
+        if (computerSelection == "rock" && playerSelection == "scissors") {return "Computer wins!";}
+        if (computerSelection == "scissors" && playerSelection == "paper") {return "Computer wins!";}
+        
+        return "Player wins!"
+    }
+
+    game();
+    
+    
+</script>
+
+</html>
